@@ -31,7 +31,7 @@ const perguntasERespostas = [
 let pontuacao = 0;
 let perguntaAtual = 0;
 let timer;
-const tempoLimite = 30; // Mudei para 30 segundos
+const tempoLimite = 30; // 30 segundos
 
 const inicio = document.getElementById("inicio");
 const jogo = document.getElementById("jogo");
@@ -73,7 +73,11 @@ function sairDoJogo() {
 
 function mostrarProximaPergunta() {
     resetarEstado();
-    mostrarPergunta(perguntasERespostas[perguntaAtual]);
+    if (perguntaAtual < perguntasERespostas.length) {
+        mostrarPergunta(perguntasERespostas[perguntaAtual]);
+    } else {
+        mostrarResultados();
+    }
 }
 
 function mostrarPergunta(pergunta) {
@@ -127,13 +131,25 @@ function verificarResposta(opcaoSelecionada, respostaCorreta) {
 
     // Mostrar resultados se for a última pergunta
     if (perguntaAtual === perguntasERespostas.length - 1) {
-        resultadosElement.classList.remove("hide");
-        resultadosElement.innerHTML = `Fim do jogo! Sua pontuação: ${pontuacao} / ${perguntasERespostas.length}`;
-        jogo.classList.add("hide");
-        musica.pause();
+        mostrarResultados(); // Mostrar resultados se for a última pergunta
     } else {
         perguntaAtual++; // Avançar para a próxima pergunta
     }
+}
+
+function mostrarResultados() {
+    resultadosElement.classList.remove("hide");
+    resultadosElement.innerHTML = `Fim do jogo! Sua pontuação: ${pontuacao} / ${perguntasERespostas.length}<br><button onclick="recomeçarJogo()">Jogar Novamente</button>`;
+    jogo.classList.add("hide");
+    musica.pause(); // Pausa a música
+}
+
+function recomeçarJogo() {
+    // Reinicia o jogo
+    pontuacao = 0;
+    perguntaAtual = 0;
+    resetarEstado();
+    iniciarJogo(); // Chama iniciarJogo para reiniciar
 }
 
 function resetarEstado() {

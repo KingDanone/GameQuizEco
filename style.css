@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+    background-color: #f0f0f0;;
     color: #333;
     display: flex;
     justify-content: center;
@@ -12,19 +12,26 @@ body {
 
 .container {
     text-align: center;
+    background-color: #ffffff; /* Fundo branco para o container do jogo */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
-    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #007bff; /* Azul */
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 
 .hide {
@@ -38,14 +45,14 @@ button:hover {
 .option {
     display: block;
     margin: 10px 0;
-    background-color: #e7f1ff;
+    background-color: #007bff;
     border: 1px solid #ccc;
     padding: 10px;
     cursor: pointer;
 }
 
 .option:hover {
-    background-color: #d0e7ff;
+    background-color: #0056b3;
 }
 
 .feedback {
