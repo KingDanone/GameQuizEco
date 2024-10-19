@@ -1,116 +1,126 @@
-const startScreen = document.getElementById('start-screen');
-const questionScreen = document.getElementById('question-screen');
-const endScreen = document.getElementById('end-screen');
-const questionElement = document.getElementById('question');
-const optionsElement = document.getElementById('options');
-const nextButton = document.getElementById('next-button');
-const startButton = document.getElementById('start-button');
-const restartButton = document.getElementById('restart-button');
-const scoreElement = document.getElementById('score');
-
-let currentQuestionIndex = 0;
-let score = 0;
-
-const questions = [
+const perguntasERespostas = [
     {
-        question: "Qual é a principal causa do aquecimento global?",
-        options: [
+        pergunta: "Qual é a principal causa do aquecimento global?",
+        opcoes: [
             "Desmatamento",
             "Queima de combustíveis fósseis",
-            "Agricultura",
+            "Agricultura"
         ],
-        answer: 1
+        respostaCorreta: 1
     },
     {
-        question: "Qual o material mais reciclado no mundo?",
-        options: [
+        pergunta: "Qual o material mais reciclado no mundo?",
+        opcoes: [
             "Plástico",
             "Vidro",
-            "Alumínio",
+            "Alumínio"
         ],
-        answer: 2
+        respostaCorreta: 2
     },
     {
-        question: "Quantos litros de água são necessários para produzir 1kg de carne bovina?",
-        options: [
+        pergunta: "Quantos litros de água são necessários para produzir 1kg de carne bovina?",
+        opcoes: [
             "15.000 litros",
             "5.000 litros",
-            "10.000 litros",
+            "10.000 litros"
         ],
-        answer: 0
+        respostaCorreta: 0
     }
 ];
 
-startButton.addEventListener('click', startGame);
-nextButton.addEventListener('click', () => {
-    currentQuestionIndex++;
-    setNextQuestion();
-});
-restartButton.addEventListener('click', restartGame);
+let pontuacao = 0;
+let perguntaAtual = 0;
+let timer;
+const tempoLimite = 10;
 
-function startGame() {
-    startScreen.classList.add('hidden');
-    questionScreen.classList.remove('hidden');
-    score = 0;
-    currentQuestionIndex = 0;
-    setNextQuestion();
+const inicio = document.getElementById("inicio");
+const jogo = document.getElementById("jogo");
+const perguntaElement = document.getElementById("pergunta");
+const opcoesElement = document.getElementById("opcoes");
+const feedbackElement = document.getElementById("feedback");
+const proximoBtn = document.getElementById("proximoBtn");
+const pontuacaoElement = document.getElementById("pontuacao");
+const contadorElement = document.getElementById("contador");
+const tempoElement = document.getElementById("tempo");
+const resultadosElement = document.getElementById("resultados");
+const startBtn = document.getElementById("startBtn");
+const musica = document.getElementById("musica");
+
+startBtn.addEventListener("click", iniciarJogo);
+proximoBtn.addEventListener("click", mostrarProximaPergunta);
+
+function iniciarJogo() {
+    pontuacao = 0;
+    perguntaAtual = 0;
+    inicio.classList.add("hide");
+    jogo.classList.remove("hide");
+    resultadosElement.classList.add("hide");
+    musica.play();
+    mostrarProximaPergunta();
 }
 
-function setNextQuestion() {
-    resetState();
-    showQuestion(questions[currentQuestionIndex]);
+function mostrarProximaPergunta() {
+    resetarEstado();
+    mostrarPergunta(perguntasERespostas[perguntaAtual]);
 }
 
-function showQuestion(question) {
-    questionElement.innerText = question.question;
-    question.options.forEach((option, index) => {
-        const button = document.createElement('button');
-        button.innerText = option;
-        button.classList.add('option-button');
-        button.addEventListener('click', () => selectOption(index));
-        optionsElement.appendChild(button);
+function mostrarPergunta(pergunta) {
+    perguntaElement.innerText = pergunta.pergunta;
+    perguntaElement.classList.remove("hide");
+    pergunta.opcoes.forEach((opcao, index) => {
+        const botaoOpcao = document.createElement("button");
+        botaoOpcao.innerText = opcao;
+        botaoOpcao.classList.add("option");
+        botaoOpcao.addEventListener("click", () => verificarResposta(index, pergunta.respostaCorreta));
+        opcoesElement.appendChild(botaoOpcao);
     });
-}
 
-function resetState() {
-    nextButton.classList.add('hidden');
-    while (optionsElement.firstChild) {
-        optionsElement.removeChild(optionsElement.firstChild);
-    }
-}
-
-function selectOption(index) {
-    const question = questions[currentQuestionIndex];
-    if (index === question.answer) {
-        score++;
-    }
-    const buttons = optionsElement.querySelectorAll('button');
-    buttons.forEach((button, i) => {
-        button.disabled = true;
-        if (i === question.answer) {
-            button.classList.add('correct');
+    // Iniciar temporizador
+    tempoElement.classList.remove("hide");
+    contadorElement.innerText = tempoLimite;
+    timer = setInterval(() => {
+        const tempoRestante = parseInt(contadorElement.innerText);
+        if (tempoRestante > 0) {
+            contadorElement.innerText = tempoRestante - 1;
         } else {
-            button.classList.add('wrong');
+            clearInterval(timer);
+            feedbackElement.innerText = "Tempo esgotado!";
+            feedbackElement.classList.add("incorreto");
+            feedbackElement.classList.remove("hide");
+            proximoBtn.classList.remove("hide");
         }
-    });
-    nextButton.classList.remove('hidden');
-    if (currentQuestionIndex === questions.length - 1) {
-        nextButton.innerText = 'Finalizar';
+    }, 1000);
+}
+
+function verificarResposta(opcaoSelecionada, respostaCorreta) {
+    clearInterval(timer); // Para o temporizador
+    if (opcaoSelecionada === respostaCorreta) {
+        pontuacao++;
+        feedbackElement.innerText = "Correto!";
+        feedbackElement.classList.add("correto");
+    } else {
+        feedbackElement.innerText = "Errado! A resposta correta era: " + perguntasERespostas[perguntaAtual].opcoes[respostaCorreta];
+        feedbackElement.classList.add("incorreto");
+    }
+    feedbackElement.classList.remove("hide");
+    proximoBtn.classList.remove("hide");
+    
+    // Atualiza a pontuação
+    pontuacaoElement.innerText = "Pontuação: " + pontuacao;
+
+    // Mostrar resultados se for a última pergunta
+    if (perguntaAtual === perguntasERespostas.length - 1) {
+        resultadosElement.classList.remove("hide");
+        resultadosElement.innerHTML = `Fim do jogo! Sua pontuação: ${pontuacao} / ${perguntasERespostas.length}`;
+        jogo.classList.add("hide");
+        musica.pause();
     }
 }
 
-function endGame() {
-    questionScreen.classList.add('hidden');
-    endScreen.classList.remove('hidden');
-    scoreElement.innerText = `Sua pontuação: ${score} de ${questions.length}`;
-}
-
-function restartGame() {
-    endScreen.classList.add('hidden');
-    startGame();
-}
-
-// Finalize the game when the last question is answered
-if (currentQuestionIndex === questions.length) {
-    endGame();
+function resetarEstado() {
+    proximoBtn.classList.add("hide");
+    opcoesElement.innerHTML = "";
+    feedbackElement.classList.add("hide");
+    feedbackElement.classList.remove("correto", "incorreto");
+    tempoElement.classList.add("hide");
 }

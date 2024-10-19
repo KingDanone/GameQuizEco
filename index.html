@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo de Perguntas e Respostas</title>
+    <title>Jogo de Perguntas e Respostas - Eco</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <div id="start-screen" class="screen">
-            <h1>Jogo de Perguntas e Respostas</h1>
-            <button id="start-button">Iniciar Jogo</button>
+    <div class="container">
+        <h1>Jogo de Perguntas e Respostas</h1>
+        <div id="inicio">
+            <button id="startBtn">Iniciar Jogo</button>
         </div>
-
-        <div id="question-screen" class="screen hidden">
-            <h2 id="question"></h2>
-            <div id="options"></div>
-            <button id="next-button" class="hidden">Próxima Pergunta</button>
-        </div>
-
-        <div id="end-screen" class="screen hidden">
-            <h2>Fim do Jogo!</h2>
-            <p id="score"></p>
-            <button id="restart-button">Reiniciar Jogo</button>
+        <div id="jogo" class="hide">
+            <div id="pergunta"></div>
+            <div id="opcoes"></div>
+            <div id="feedback" class="hide"></div>
+            <button id="proximoBtn" class="hide">Próxima Pergunta</button>
+            <div id="pontuacao">Pontuação: 0</div>
+            <div id="tempo" class="hide">Tempo: <span id="contador">10</span> segundos</div>
+            <div id="resultados" class="hide"></div>
         </div>
     </div>
-
+    <audio id="musica" src="background-music.mp3" loop></audio>
     <script src="script.js"></script>
 </body>
 </html>
