@@ -1,33 +1,4 @@
-const perguntasERespostas = [
-    {
-        pergunta: "Qual é a principal causa do aquecimento global?",
-        opcoes: [
-            "Desmatamento",
-            "Queima de combustíveis fósseis",
-            "Agricultura"
-        ],
-        respostaCorreta: 1
-    },
-    {
-        pergunta: "Qual o material mais reciclado no mundo?",
-        opcoes: [
-            "Plástico",
-            "Vidro",
-            "Alumínio"
-        ],
-        respostaCorreta: 2
-    },
-    {
-        pergunta: "Quantos litros de água são necessários para produzir 1kg de carne bovina?",
-        opcoes: [
-            "15.000 litros",
-            "5.000 litros",
-            "10.000 litros"
-        ],
-        respostaCorreta: 0
-    }
-];
-
+let perguntasERespostas = [];
 let pontuacao = 0;
 let perguntaAtual = 0;
 let timer;
@@ -48,11 +19,23 @@ const sairBtn = document.getElementById("sairBtn");
 const musica = document.getElementById("musica");
 
 // Diminuir o volume da música em 50%
-musica.volume = 0.5; 
+musica.volume = 0.5;
 
-startBtn.addEventListener("click", iniciarJogo);
+// Adiciona o evento ao botão de início
+startBtn.addEventListener("click", carregarPerguntas);
 sairBtn.addEventListener("click", sairDoJogo);
 proximoBtn.addEventListener("click", mostrarProximaPergunta);
+
+// Função para carregar as perguntas do arquivo JSON
+function carregarPerguntas() {
+    fetch('perguntas.json')
+        .then(response => response.json())
+        .then(data => {
+            perguntasERespostas = data;
+            iniciarJogo();
+        })
+        .catch(error => console.error('Erro ao carregar perguntas:', error));
+}
 
 function iniciarJogo() {
     pontuacao = 0;
@@ -60,7 +43,7 @@ function iniciarJogo() {
     inicio.classList.add("hide");
     jogo.classList.remove("hide");
     resultadosElement.classList.add("hide");
-    musica.play();
+    musica.play(); // Começa a música quando o jogo inicia
     mostrarProximaPergunta();
 }
 
@@ -156,7 +139,7 @@ function recomeçarJogo() {
     pontuacao = 0;
     perguntaAtual = 0;
     resetarEstado();
-    iniciarJogo(); // Chama iniciarJogo para reiniciar
+    carregarPerguntas(); // Chama carregarPerguntas para reiniciar
 }
 
 function resetarEstado() {
@@ -169,5 +152,5 @@ function resetarEstado() {
 
 // Adiciona um evento para que a música comece a tocar assim que o jogo começa
 document.addEventListener('DOMContentLoaded', () => {
-    musica.play(); // Inicia a música ao carregar a página
+    musica.volume = 0.5; // Redefine o volume ao carregar a página
 });

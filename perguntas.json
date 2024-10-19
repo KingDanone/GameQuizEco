@@ -1,0 +1,65 @@
+[
+    {
+        "pergunta": "Qual é a principal causa do aquecimento global?",
+        "opcoes": [
+            "Desmatamento",
+            "Queima de combustíveis fósseis",
+            "Agricultura"
+        ],
+        "respostaCorreta": 1
+    },
+    {
+        "pergunta": "Qual o material mais reciclado no mundo?",
+        "opcoes": [
+            "Plástico",
+            "Vidro",
+            "Alumínio"
+        ],
+        "respostaCorreta": 2
+    },
+    {
+        "pergunta": "Quantos litros de água são necessários para produzir 1kg de carne bovina?",
+        "opcoes": [
+            "15.000 litros",
+            "5.000 litros",
+            "10.000 litros"
+        ],
+        "respostaCorreta": 0
+    },
+    {
+        "pergunta": "Qual é a energia renovável mais utilizada no mundo?",
+        "opcoes": [
+            "Solar",
+            "Eólica",
+            "Hidrelétrica"
+        ],
+        "respostaCorreta": 2
+    },
+    {
+        "pergunta": "O que é compostagem?",
+        "opcoes": [
+            "Processo de transformar lixo em energia",
+            "Processo de decomposição de resíduos orgânicos",
+            "Método de reciclagem de plásticos"
+        ],
+        "respostaCorreta": 1
+    },
+    {
+        "pergunta": "Quantas árvores são cortadas por ano no mundo?",
+        "opcoes": [
+            "15 bilhões",
+            "5 bilhões",
+            "1 bilhão"
+        ],
+        "respostaCorreta": 0
+    },
+    {
+        "pergunta": "Qual o principal gás do efeito estufa?",
+        "opcoes": [
+            "Dióxido de carbono",
+            "Metano",
+            "Óxido nitroso"
+        ],
+        "respostaCorreta": 0
+    }
+]
