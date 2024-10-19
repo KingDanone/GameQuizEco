@@ -83,6 +83,7 @@ function mostrarProximaPergunta() {
 function mostrarPergunta(pergunta) {
     perguntaElement.innerText = pergunta.pergunta;
     perguntaElement.classList.remove("hide");
+    opcoesElement.innerHTML = ''; // Limpa opções anteriores
     pergunta.opcoes.forEach((opcao, index) => {
         const botaoOpcao = document.createElement("button");
         botaoOpcao.innerText = opcao;
@@ -115,7 +116,7 @@ function verificarResposta(opcaoSelecionada, respostaCorreta) {
         pontuacao++;
         feedbackElement.innerText = "Correto!";
         feedbackElement.classList.add("correto");
-    } else if (opcaoSelecionada === -1) { // Se a resposta for -1, significa que o tempo acabou
+    } else if (opcaoSelecionada === -1) {
         feedbackElement.innerText = "Errado! A resposta correta era: " + perguntasERespostas[perguntaAtual].opcoes[respostaCorreta];
         feedbackElement.classList.add("incorreto");
     } else {
@@ -139,9 +140,15 @@ function verificarResposta(opcaoSelecionada, respostaCorreta) {
 
 function mostrarResultados() {
     resultadosElement.classList.remove("hide");
-    resultadosElement.innerHTML = `Fim do jogo! Sua pontuação: ${pontuacao} / ${perguntasERespostas.length}<br><button onclick="recomeçarJogo()">Jogar Novamente</button>`;
+    resultadosElement.innerHTML = `
+        <p>Fim do jogo! Sua pontuação: ${pontuacao} / ${perguntasERespostas.length}</p>
+        <button id="jogarNovamenteBtn">Jogar Novamente</button>
+    `;
     jogo.classList.add("hide");
     musica.pause(); // Pausa a música
+
+    // Adiciona o evento ao botão de jogar novamente
+    document.getElementById("jogarNovamenteBtn").addEventListener("click", recomeçarJogo);
 }
 
 function recomeçarJogo() {
@@ -159,3 +166,8 @@ function resetarEstado() {
     feedbackElement.classList.remove("correto", "incorreto");
     tempoElement.classList.add("hide");
 }
+
+// Adiciona um evento para que a música comece a tocar assim que o jogo começa
+document.addEventListener('DOMContentLoaded', () => {
+    musica.play(); // Inicia a música ao carregar a página
+});
