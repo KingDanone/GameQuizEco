@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Perguntas e Respostas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="start-screen" class="screen">
+            <h1>Jogo de Perguntas e Respostas</h1>
+            <button id="start-button">Iniciar Jogo</button>
+        </div>
+
+        <div id="question-screen" class="screen hidden">
+            <h2 id="question"></h2>
+            <div id="options"></div>
+            <button id="next-button" class="hidden">Próxima Pergunta</button>
+        </div>
+
+        <div id="end-screen" class="screen hidden">
+            <h2>Fim do Jogo!</h2>
+            <p id="score"></p>
+            <button id="restart-button">Reiniciar Jogo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
