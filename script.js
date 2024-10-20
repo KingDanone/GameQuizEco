@@ -17,6 +17,7 @@ const resultadosElement = document.getElementById("resultados");
 const startBtn = document.getElementById("startBtn");
 const sairBtn = document.getElementById("sairBtn");
 const musica = document.getElementById("musica");
+const toggleThemeBtn = document.getElementById("toggleThemeBtn");
 
 // Diminuir o volume da música em 50%
 musica.volume = 0.5;
@@ -154,3 +155,21 @@ function resetarEstado() {
 document.addEventListener('DOMContentLoaded', () => {
     musica.volume = 0.5; // Redefine o volume ao carregar a página
 });
+
+toggleThemeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("light-mode");
+
+    const container = document.querySelector('.container');
+    container.classList.toggle('dark-mode');
+    container.classList.toggle('light-mode');
+
+    // Alterna os temas para os botões de opções
+    const botoes = document.querySelectorAll('button');
+    botoes.forEach(botao => {
+        botao.classList.toggle('dark-mode');
+        botao.classList.toggle('light-mode');
+    });
+});
+
+

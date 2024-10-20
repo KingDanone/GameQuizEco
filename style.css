@@ -70,3 +70,90 @@ button:hover {
     margin-top: 20px;
     font-size: 18px;
 }
+
+/* Estilos para desktops */
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container {
+    padding: 20px;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+/* Botões para tema claro */
+body.light-mode button {
+    background-color: #007bff; /* Azul */
+    color: #fff;
+}
+
+body.light-mode .option {
+    background-color: #2196f3;
+    color: #fff;
+}
+
+body.light-mode {
+    background-color: #ffffff;
+    color: #333; /* Cor do texto em modo claro */
+}
+
+.container.light-mode {
+    background-color: #f0f0f0; /* Fundo mais claro para a container no tema claro */
+}
+
+/* Botões para tema escuro */
+body.dark-mode button {
+    background-color: #007bff; /* Cinza Escuro */
+    color: #fff;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #ffffff; /* Cor do texto em modo escuro */
+}
+
+.container.dark-mode {
+    background-color: #444; /* Fundo mais escuro para a container no tema escuro */
+    color: #fff; /* Certifique-se de que o texto dentro da container fique visível */
+}
+
+body.dark-mode .option {
+    background-color: #555; /* Outra tonalidade de cinza */
+    color: #fff;
+}
+
+/* Animação de entrada da pergunta */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-in.active {
+    opacity: 1;
+}
+
+/* Animação para feedback de resposta */
+.feedback {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.feedback.show {
+    opacity: 1;
+    transform: scale(1);
+}
