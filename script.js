@@ -2,6 +2,7 @@ let perguntasERespostas = [];
 let pontuacao = 0;
 let perguntaAtual = 0;
 let timer;
+let vidas = 3;
 const tempoLimite = 30; // 30 segundos
 
 const inicio = document.getElementById("inicio");
@@ -40,11 +41,13 @@ function carregarPerguntas() {
 
 function iniciarJogo() {
     pontuacao = 0;
+    vidas = 3; // Reiniciar o número de vidas
     perguntaAtual = 0;
     inicio.classList.add("hide");
     jogo.classList.remove("hide");
     resultadosElement.classList.add("hide");
     musica.play(); // Começa a música quando o jogo inicia
+    inicializarVidas(); // Chame para exibir os corações
     mostrarProximaPergunta();
 }
 
@@ -120,6 +123,15 @@ function verificarResposta(opcaoSelecionada, respostaCorreta) {
     } else {
         perguntaAtual++; // Avançar para a próxima pergunta
     }
+
+    if (opcaoSelecionada !== respostaCorreta) {
+        vidas--;
+        atualizarVidas();
+        if (vidas === 0) {
+            alert("Você perdeu todas as suas vidas!");
+            mostrarResultados();
+        }
+    }
 }
 
 function mostrarResultados() {
@@ -139,7 +151,9 @@ function recomeçarJogo() {
     // Reinicia o jogo
     pontuacao = 0;
     perguntaAtual = 0;
+    vidas = 3; // Reinicia o número de vidas
     resetarEstado();
+    inicializarVidas(); // Reinicializa os corações
     carregarPerguntas(); // Chama carregarPerguntas para reiniciar
 }
 
@@ -151,25 +165,51 @@ function resetarEstado() {
     tempoElement.classList.add("hide");
 }
 
-// Adiciona um evento para que a música comece a tocar assim que o jogo começa
-document.addEventListener('DOMContentLoaded', () => {
-    musica.volume = 0.5; // Redefine o volume ao carregar a página
-});
+// Função para inicializar as vidas com corações
+function inicializarVidas() {
+    const vidasContainer = document.getElementById('vidas');
+    vidasContainer.innerHTML = ''; // Limpa o conteúdo
+    for (let i = 0; i < vidas; i++) {
+        const coracao = document.createElement('div');
+        coracao.classList.add('vida');
+        vidasContainer.appendChild(coracao);
+    }
+}
 
+// Função para atualizar os corações quando o jogador perde uma vida
+function atualizarVidas() {
+    const coracoes = document.querySelectorAll('.vida');
+    if (vidas < coracoes.length) {
+        coracoes[vidas].classList.add('perdida'); // Marca o próximo coração como "perdido"
+    }
+}
+
+// Função para alternar entre o tema claro e escuro
 toggleThemeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    document.body.classList.toggle("light-mode");
-
-    const container = document.querySelector('.container');
-    container.classList.toggle('dark-mode');
-    container.classList.toggle('light-mode');
-
-    // Alterna os temas para os botões de opções
-    const botoes = document.querySelectorAll('button');
-    botoes.forEach(botao => {
-        botao.classList.toggle('dark-mode');
-        botao.classList.toggle('light-mode');
-    });
+    const body = document.body;
+    
+    // Alterna entre os temas claro e escuro
+    if (body.classList.contains("dark-mode")) {
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+    } else {
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+    }
+    
+    // Salvar a preferência do tema no localStorage
+    localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
 });
 
+// Função para aplicar o tema salvo ao carregar a página
+function aplicarTemaSalvo() {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+    } else {
+        document.body.classList.add("light-mode");
+    }
+}
 
+// Aplica o tema quando a página é carregada
+window.addEventListener("load", aplicarTemaSalvo);

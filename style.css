@@ -157,3 +157,29 @@ body.dark-mode .option {
     opacity: 1;
     transform: scale(1);
 }
+
+#vidas {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vidas-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.vida {
+    width: 30px;
+    height: 30px;
+    background-image: url('coração.png'); /* Aqui você adiciona o caminho da imagem */
+    background-size: cover;
+    margin: 0 5px;
+    transition: opacity 0.3s;
+}
+
+.vida.perdida {
+    opacity: 0.3; /* Torna o coração mais opaco quando a vida for perdida */
+}
