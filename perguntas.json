@@ -6,7 +6,9 @@
             "Queima de combustíveis fósseis",
             "Agricultura"
         ],
-        "respostaCorreta": 1
+        "respostaCorreta": 1,
+        "categoria": "Clima",
+        "dificuldade": "facil"
     },
     {
         "pergunta": "Qual o material mais reciclado no mundo?",
@@ -15,7 +17,9 @@
             "Vidro",
             "Alumínio"
         ],
-        "respostaCorreta": 2
+        "respostaCorreta": 2,
+        "categoria": "Reciclagem",
+        "dificuldade": "facil"
     },
     {
         "pergunta": "Quantos litros de água são necessários para produzir 1kg de carne bovina?",
@@ -24,7 +28,9 @@
             "5.000 litros",
             "10.000 litros"
         ],
-        "respostaCorreta": 0
+        "respostaCorreta": 0,
+        "categoria": "Recursos Hídricos",
+        "dificuldade": "medio"
     },
     {
         "pergunta": "Qual é a energia renovável mais utilizada no mundo?",
@@ -33,7 +39,9 @@
             "Eólica",
             "Hidrelétrica"
         ],
-        "respostaCorreta": 2
+        "respostaCorreta": 2,
+        "categoria": "Energia",
+        "dificuldade": "facil"
     },
     {
         "pergunta": "O que é compostagem?",
@@ -42,7 +50,9 @@
             "Processo de decomposição de resíduos orgânicos",
             "Método de reciclagem de plásticos"
         ],
-        "respostaCorreta": 1
+        "respostaCorreta": 1,
+        "categoria": "Sustentabilidade",
+        "dificuldade": "medio"
     },
     {
         "pergunta": "Quantas árvores são cortadas por ano no mundo?",
@@ -51,7 +61,9 @@
             "5 bilhões",
             "1 bilhão"
         ],
-        "respostaCorreta": 0
+        "respostaCorreta": 0,
+        "categoria": "Florestas",
+        "dificuldade": "dificil"
     },
     {
         "pergunta": "Qual o principal gás do efeito estufa?",
@@ -60,6 +72,173 @@
             "Metano",
             "Óxido nitroso"
         ],
-        "respostaCorreta": 0
+        "respostaCorreta": 0,
+        "categoria": "Clima",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é a porcentagem de plástico reciclado no mundo?",
+        "opcoes": [
+            "9%",
+            "25%",
+            "50%"
+        ],
+        "respostaCorreta": 0,
+        "categoria": "Reciclagem",
+        "dificuldade": "dificil"
+    },
+    {
+        "pergunta": "Qual a principal fonte de poluição da água?",
+        "opcoes": [
+            "Lixo",
+            "Petróleo",
+            "Resíduos industriais"
+        ],
+        "respostaCorreta": 2,
+        "categoria": "Sustentabilidade",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é o principal impacto da acidificação dos oceanos?",
+        "opcoes": [
+            "Desaparecimento de corais",
+            "Aumento da temperatura da água",
+            "Diminuição da biodiversidade"
+        ],
+        "respostaCorreta": 0,
+        "categoria": "Sustentabilidade",
+        "dificuldade": "dificil"
+    },
+    {
+        "pergunta": "Qual é a prática mais eficaz para reduzir a emissão de carbono?",
+        "opcoes": [
+            "Uso de energias renováveis",
+            "Redução do uso de água",
+            "Aumento do uso de plásticos"
+        ],
+        "respostaCorreta": 0,
+        "categoria": "Energia",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é a principal causa da extinção de espécies?",
+        "opcoes": [
+            "Mudanças climáticas",
+            "Desmatamento",
+            "Poluição"
+        ],
+        "respostaCorreta": 1,
+        "categoria": "Biodiversidade",
+        "dificuldade": "dificil"
+    },
+    {
+        "pergunta": "Quantas toneladas de plástico são jogadas no oceano a cada ano?",
+        "opcoes": [
+            "8 milhões",
+            "5 milhões",
+            "10 milhões"
+        ],
+        "respostaCorreta": 0,
+        "categoria": "Poluição",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual o principal gás que causa o efeito estufa?",
+        "opcoes": [
+            "Dióxido de carbono",
+            "Oxido nitroso",
+            "Dióxido de enxofre"
+        ],
+        "respostaCorreta": 0,
+        "categoria": "Clima",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "O que é o Protocolo de Kyoto?",
+        "opcoes": [
+            "Um acordo internacional para reduzir emissões de gases de efeito estufa",
+            "Um tipo de energia renovável",
+            "Uma técnica de reciclagem"
+        ],
+        "respostaCorreta": 0,
+        "categoria": "Política Ambiental",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é a quantidade de plástico que uma pessoa consome por ano?",
+        "opcoes": [
+            "2 kg",
+            "8 kg",
+            "15 kg"
+        ],
+        "respostaCorreta": 1,
+        "categoria": "Reciclagem",
+        "dificuldade": "dificil"
+    },
+    {
+        "pergunta": "Qual é a principal fonte de energia utilizada no Brasil?",
+        "opcoes": [
+            "Hidrelétrica",
+            "Solar",
+            "Eólica"
+        ],
+        "respostaCorreta": 0,
+        "categoria": "Energia",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o principal poluente do ar nas cidades?",
+        "opcoes": [
+            "Dióxido de carbono",
+            "Monóxido de carbono",
+            "Dióxido de enxofre"
+        ],
+        "respostaCorreta": 1,
+        "categoria": "Poluição",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "O que significa a sigla ODS?",
+        "opcoes": [
+            "Objetivos de Desenvolvimento Sustentável",
+            "Organização de Defesa da Sustentabilidade",
+            "Observatório de Dados Sustentáveis"
+        ],
+        "respostaCorreta": 0,
+        "categoria": "Desenvolvimento Sustentável",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual a principal fonte de energia renovável no mundo?",
+        "opcoes": [
+            "Energia solar",
+            "Energia eólica",
+            "Energia hidrelétrica"
+        ],
+        "respostaCorreta": 2,
+        "categoria": "Energia",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o impacto da agricultura intensiva no solo?",
+        "opcoes": [
+            "Melhoria da qualidade do solo",
+            "Erosão do solo",
+            "Aumento da biodiversidade"
+        ],
+        "respostaCorreta": 1,
+        "categoria": "Agricultura",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é a meta de redução de emissões de CO2 estabelecida pelo Acordo de Paris?",
+        "opcoes": [
+            "Manter o aumento da temperatura abaixo de 1,5°C",
+            "Reduzir em 40% até 2030",
+            "Eliminar completamente até 2050"
+        ],
+        "respostaCorreta": 0,
+        "categoria": "Política Ambiental",
+        "dificuldade": "dificil"
     }
 ]

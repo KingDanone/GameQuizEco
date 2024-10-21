@@ -15,9 +15,11 @@ body {
     background-color: #ffffff; /* Fundo branco para o container do jogo */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    padding: 30px;
+    padding: 20px;
     width: 90%;
     max-width: 600px;
+    margin: 0 auto;
+
 }
 
 button {
@@ -182,4 +184,32 @@ body.dark-mode .option {
 
 .vida.perdida {
     opacity: 0.3; /* Torna o coração mais opaco quando a vida for perdida */
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#dificuldade, #categoria {
+    margin: 10px 0;
+}
+
+select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#pontuacao, #tempo {
+    margin: 10px 0;
+    font-weight: bold;
 }

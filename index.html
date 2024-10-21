@@ -12,9 +12,19 @@
         <div>
             <button id="toggleThemeBtn">Alternar Tema</button>
         </div>
+        
         <div id="inicio">
+            <div id="dificuldade">
+                <label for="nivel">Escolha a Dificuldade:</label>
+                <select id="nivel">
+                    <option value="facil">Fácil</option>
+                    <option value="medio">Médio</option>
+                    <option value="dificil">Difícil</option>
+                </select>
+            </div>
             <button id="startBtn">Iniciar Jogo</button>
         </div>
+
         <div id="jogo" class="hide">
             <div id="pergunta"></div>
             <div id="opcoes"></div>
@@ -34,6 +44,7 @@
             <div id="resultados" class="hide"></div> <!-- Elemento para resultados -->
         </div>
     </div>
+    
     <audio id="musica" src="background-music.mp3" loop></audio>
     <script src="script.js"></script>
 </body>

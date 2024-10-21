@@ -33,7 +33,8 @@ function carregarPerguntas() {
     fetch('perguntas.json')
         .then(response => response.json())
         .then(data => {
-            perguntasERespostas = data;
+            const nivelSelecionado = document.getElementById("nivel").value; // Obtém o nível selecionado
+            perguntasERespostas = data.filter(pergunta => pergunta.dificuldade === nivelSelecionado); // Filtra perguntas pelo nível
             iniciarJogo();
         })
         .catch(error => console.error('Erro ao carregar perguntas:', error));
@@ -187,33 +188,34 @@ function atualizarVidas() {
 // Função para alternar entre o tema claro e escuro
 toggleThemeBtn.addEventListener("click", () => {
     const body = document.body;
-    const container = document.querySelector('.container'); // Seleciona o container
+    const container = document.querySelector('.container'); // Seleciona o contêiner
 
     // Alterna entre os temas claro e escuro
     if (body.classList.contains("dark-mode")) {
         body.classList.remove("dark-mode");
-        body.classList.add("light-mode");
-        container.classList.remove("dark-mode"); // Remove a classe do container
-        container.classList.add("light-mode"); // Adiciona a classe do container (se existir)
+        container.classList.remove("dark-mode"); // Remove a classe do contêiner
+        // Não adiciona light-mode, pois é o padrão
     } else {
-        body.classList.remove("light-mode");
         body.classList.add("dark-mode");
-        container.classList.remove("light-mode"); // Remove a classe do container
-        container.classList.add("dark-mode"); // Adiciona a classe do container (se existir)
+        container.classList.add("dark-mode"); // Adiciona a classe ao contêiner
     }
 
     // Salvar a preferência do tema no localStorage
     localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
 });
 
-
 // Função para aplicar o tema salvo ao carregar a página
 function aplicarTemaSalvo() {
     const theme = localStorage.getItem("theme");
+    const body = document.body;
+    const container = document.querySelector('.container');
+
     if (theme === "dark") {
-        document.body.classList.add("dark-mode");
+        body.classList.add("dark-mode");
+        container.classList.add("dark-mode"); // Aplica ao contêiner
     } else {
-        document.body.classList.add("light-mode");
+        body.classList.remove("dark-mode");
+        // Não é necessário adicionar light-mode, pois é o padrão
     }
 }
 
