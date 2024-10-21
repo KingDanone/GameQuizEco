@@ -122,13 +122,13 @@ body.dark-mode button {
 }
 
 body.dark-mode {
-    background-color: #333;
+    background-color: #121212;
     color: #ffffff; /* Cor do texto em modo escuro */
 }
 
 .container.dark-mode {
     background-color: #444; /* Fundo mais escuro para a container no tema escuro */
-    color: #fff; /* Certifique-se de que o texto dentro da container fique visível */
+    color: #fff;
 }
 
 body.dark-mode .option {

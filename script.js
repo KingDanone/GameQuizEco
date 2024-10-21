@@ -187,19 +187,25 @@ function atualizarVidas() {
 // Função para alternar entre o tema claro e escuro
 toggleThemeBtn.addEventListener("click", () => {
     const body = document.body;
-    
+    const container = document.querySelector('.container'); // Seleciona o container
+
     // Alterna entre os temas claro e escuro
     if (body.classList.contains("dark-mode")) {
         body.classList.remove("dark-mode");
         body.classList.add("light-mode");
+        container.classList.remove("dark-mode"); // Remove a classe do container
+        container.classList.add("light-mode"); // Adiciona a classe do container (se existir)
     } else {
         body.classList.remove("light-mode");
         body.classList.add("dark-mode");
+        container.classList.remove("light-mode"); // Remove a classe do container
+        container.classList.add("dark-mode"); // Adiciona a classe do container (se existir)
     }
-    
+
     // Salvar a preferência do tema no localStorage
     localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
 });
+
 
 // Função para aplicar o tema salvo ao carregar a página
 function aplicarTemaSalvo() {
