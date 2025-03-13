@@ -176,7 +176,7 @@ body.dark-mode .option {
 .vida {
     width: 30px;
     height: 30px;
-    background-image: url('coração.png'); /* Aqui você adiciona o caminho da imagem */
+    background-image: url('img/coração.png'); /* Aqui você adiciona o caminho da imagem */
     background-size: cover;
     margin: 0 5px;
     transition: opacity 0.3s;
